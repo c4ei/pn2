@@ -27,12 +27,18 @@ Development with Geth/POA is still pretty hard. There are a few tools out there 
 2. Then two signers are connecting through _DNS_. **No static IPs**
 3. Then two clients are connecting as well.
 4. After the system is started, the explorers are attaching to the nodes
+1. 이 docker-compose 파일은 부트노드를 부팅합니다.
+2. 그러면 두 명의 서명자가 _DNS_를 통해 연결됩니다. **고정 IP 없음**
+3. 그러면 두 클라이언트도 연결됩니다.
+4. 시스템이 시작된 후 탐험가가 노드에 연결됩니다.
 
 Everything works through __environment variables__. So, if you need to deploy geth to AWS for your private network, then the bulk of work is done here.
+모든 것은 __환경 변수__ 를 통해 작동합니다. 따라서 프라이빗 네트워크를 위해 AWS에 geth를 배포해야 하는 경우 대부분의 작업이 여기에서 완료됩니다.
 
 ## From Development to Production
 
 Change the values in the .env file and potentially adapt the values in docker-compose.yml
+.env 파일의 값을 변경하고 잠재적으로 docker-compose.yml의 값을 조정합니다.
 
 ## Services
 

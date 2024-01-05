@@ -1,0 +1,8 @@
+version: "3"
+services:
+  bootnode:
+    hostname: bootnode
+    build:
+      context: ./bootnode
+    environment:
+      NODEKEYHEX: 3211cb5f88460a272603e3ec1e4342fa6073d09150f1d7274784a7b99b7cdfa3

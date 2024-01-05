@@ -1,0 +1,5 @@
+.env
+bootnode.key
+data/
+
+*.txt

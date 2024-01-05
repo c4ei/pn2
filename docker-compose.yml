@@ -1,11 +1,14 @@
 version: "3"
 services:
-  # bootnode:
-  #   hostname: bootnode
-  #   build:
-  #     context: ./bootnode
-  #   environment:
-  #     NODEKEYHEX: ${NODEKEYHEX}
+  bootnode:
+    hostname: bootnode
+    build:
+      context: ./bootnode
+      # context: ./bootnode -nodekey /home/dev/www/abc/bootnode/bootnode.key -verbosity 4 -addr :30111
+    environment:
+      NODEKEYHEX: ${NODEKEYHEX}
+      # addr: 30111
+      # verbosity: 4
   signer-1:
     hostname: signer-1
     build:
@@ -19,7 +22,7 @@ services:
       ENODEPUB_2: ${ENODEPUB_2}
       NETWORK_CHAIN_ID: ${NETWORK_CHAIN_ID}
     volumes:
-      - eth-data-1:/app/datadir
+      - /home/dev/www/abc/data/dock_node/node1:/app/datadir
   signer-2:
     hostname: signer-2
     build:
@@ -33,7 +36,7 @@ services:
       ENODEPUB_2: ${ENODEPUB_2}
       NETWORK_CHAIN_ID: ${NETWORK_CHAIN_ID}
     volumes:
-      - eth-data-2:/app/datadir
+      - /home/dev/www/abc/data/dock_node/node2:/app/datadir
     depends_on:
       - signer-1
   client-1:
@@ -49,7 +52,7 @@ services:
       - "8545:8545"
       - "8546:8546"
     volumes:
-      - eth-data-3:/app/datadir
+      - /home/dev/www/abc/data/dock_node/node3:/app/datadir
     depends_on:
       - signer-1
       - signer-2
@@ -67,7 +70,7 @@ services:
       - "8547:8545"
       - "8548:8546"
     volumes:
-      - eth-data-4:/app/datadir
+      - /home/dev/www/abc/data/dock_node/node4:/app/datadir
     depends_on:
       - signer-1
 
@@ -100,7 +103,7 @@ services:
     build:
       context: ./blockscout
       args:
-        COIN: tETH
+        COIN: ABC
     restart: on-failure
     env_file:
       - ./blockscout/common-blockscout.env
@@ -109,7 +112,7 @@ services:
       BLOCK_TRANSFORMER: clique
       ETHEREUM_JSONRPC_HTTP_URL: http://client-1:8545/
       ETHEREUM_JSONRPC_WS_URL: ws://client-1:8546
-      DATABASE_URL: postgresql://postgres:@db:5432/blockscout?ssl=false
+      DATABASE_URL: postgresql://postgres:gkgk^^@db:5432/blockscout?ssl=false
       ECTO_USE_SSL: "false"
       SUBNETWORK: "Dev"
       SECRET_KEY_BASE: VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No
@@ -132,14 +135,13 @@ services:
     restart: always
     container_name: 'postgres'
     environment:
-        POSTGRES_PASSWORD: ''
+        POSTGRES_PASSWORD: 'gkgk^^'
         POSTGRES_USER: 'postgres'
         POSTGRES_HOST_AUTH_METHOD: 'trust'
-    # ports:
-    #   - 7432:5432
-    
+    ports:
+      - 7432:5432
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - /home/dev/www/abc/data/postgresql/data:/var/lib/postgresql/data:rw
 
   dashboard:
     hostname: dashboard
@@ -162,9 +164,9 @@ services:
     volumes:
       - ./ethstats-reporter/app.json:/opt/ethstats/app.json:ro
 
-volumes:
-  eth-data-1:
-  eth-data-2:
-  eth-data-3:
-  eth-data-4:
-  db-data:
+# volumes:
+  # eth-data-1:
+  # eth-data-2:
+  # eth-data-3:
+  # eth-data-4:
+  # db-data:

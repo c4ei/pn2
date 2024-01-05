@@ -12,7 +12,7 @@
         "NODE_ENV": "development",
         "RPC_HOST": "signer-1",
         "RPC_PORT": "8545",
-        "LISTENING_PORT": "30303",
+        "LISTENING_PORT": "30111",
         "INSTANCE_NAME": "signer-1",
         "WS_SERVER": "ws://dashboard:3000"
       }
@@ -30,7 +30,7 @@
         "NODE_ENV": "development",
         "RPC_HOST": "signer-2",
         "RPC_PORT": "8545",
-        "LISTENING_PORT": "30303",
+        "LISTENING_PORT": "30111",
         "INSTANCE_NAME": "signer-2",
         "WS_SERVER": "ws://dashboard:3000"
       }
@@ -48,7 +48,7 @@
         "NODE_ENV": "production",
         "RPC_HOST": "client-1",
         "RPC_PORT": "8545",
-        "LISTENING_PORT": "30303",
+        "LISTENING_PORT": "30111",
         "INSTANCE_NAME": "client-1",
         "WS_SERVER": "ws://dashboard:3000"
       }
@@ -66,7 +66,7 @@
         "NODE_ENV": "production",
         "RPC_HOST": "client-2",
         "RPC_PORT": "8545",
-        "LISTENING_PORT": "30303",
+        "LISTENING_PORT": "30111",
         "INSTANCE_NAME": "client-2",
         "WS_SERVER": "ws://dashboard:3000"
       }

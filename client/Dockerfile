@@ -1,4 +1,5 @@
-FROM ethereum/client-go:alltools-latest
+# FROM ethereum/client-go:alltools-latest
+FROM ethereum/client-go:alltools-v1.10.16
 
 WORKDIR /app
 
